@@ -102,7 +102,7 @@ print("\n---\n")
 
 # [10] Contact — functie cu parametri numiti
 trimite_mesaj(
-    nume="Andrei",
-    email="andrei@email.com",
+    nume="Radu",
+    email="radu@email.com",
     mesaj="Salut! Interesant proiectul tau!"
 )
