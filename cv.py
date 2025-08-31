@@ -1,5 +1,5 @@
 # cv.py
-# Clasa CV: nume, email, experienta + afisare (fara 'typing', fara type hints)
+# Clasa CV: nume, email, experienta + afisare
 
 class CV:
     def __init__(self, nume, email, experienta=None):
