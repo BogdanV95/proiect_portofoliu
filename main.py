@@ -1,5 +1,3 @@
-# main.py
-
 from cv import CV
 from proiecte import Proiect
 from contact import trimite_mesaj
@@ -106,3 +104,71 @@ trimite_mesaj(
     email="radu@email.com",
     mesaj="Salut! Interesant proiectul tau!"
 )
+
+
+# ====================================
+# MENIU INTERACTIV ADĂUGAT
+# ====================================
+
+cv_list = []
+proiecte_list = []
+
+def meniu():
+    print("\n=== MENIU PRINCIPAL ===")
+    print("1. Adaugă CV")
+    print("2. Vezi CV-uri")
+    print("3. Adaugă proiect")
+    print("4. Vezi proiecte")
+    print("5. Trimite mesaj")
+    print("0. Ieșire")
+
+while True:
+    meniu()
+    opt = input("Alege o opțiune: ")
+
+    if opt == "1":
+        nume = input("Nume: ")
+        email = input("Email: ")
+        experienta = input("Experiență (separați cu virgulă): ").split(",")
+        cv = CV(nume, email, [e.strip() for e in experienta if e.strip()])
+        cv_list.append(cv)
+        print("CV adăugat cu succes!")
+
+    elif opt == "2":
+        if not cv_list:
+            print("Nu există CV-uri salvate.")
+        else:
+            print("\n=== CV-URI ===")
+            for cv in cv_list:
+                cv.afiseaza_cv()
+                print("------")
+
+    elif opt == "3":
+        titlu = input("Titlu proiect: ")
+        descriere = input("Descriere: ")
+        link = input("Link GitHub: ")
+        proiect = Proiect(titlu, descriere, link)
+        proiecte_list.append(proiect)
+        print("Proiect adăugat cu succes!")
+
+    elif opt == "4":
+        if not proiecte_list:
+            print("Nu există proiecte salvate.")
+        else:
+            print("\n=== PROIECTE ===")
+            for proiect in proiecte_list:
+                proiect.afiseaza_proiect()
+                print("------")
+
+    elif opt == "5":
+        nume = input("Nume expeditor: ")
+        email = input("Email expeditor: ")
+        mesaj = input("Mesaj: ")
+        trimite_mesaj(nume, email, mesaj)
+
+    elif opt == "0":
+        print("La revedere!")
+        break
+
+    else:
+        print("Opțiune invalidă. Încearcă din nou.")
